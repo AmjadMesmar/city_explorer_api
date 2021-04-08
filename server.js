@@ -7,6 +7,7 @@
 //DOTENV (read our enviroment variable)
 
 require('dotenv').config();
+
 // Application Dependencies
 
 const express = require('express');
@@ -18,14 +19,19 @@ const yelp = require( 'yelp-fusion' ); // This is needed for yelp and yelp-fusio
 // Application Setup
 const PORT = process.env.PORT || 3000;
 
-// const client = new pg.Client(process.env.DATABASE_URL); // adding DATABASE URL
-// clients.connect(); // Activate the client
-const client = new pg.Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
+// adding DATABASE URL for localhost:
+const client = new pg.Client(process.env.DATABASE_URL);
+
+// clients.connect(); // Activate the client   //better use the connect function at the end of the code.
+
+// adding DATABASE URL for Heroku:
+// const client = new pg.Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
 
 const app = express();
 app.use(cors());
 
 // Routes
+
 app.get('/', homeRouteHandler);
 app.get('/location', locationHandler);
 app.get('/showlocation', locationTableHandler);
@@ -36,6 +42,7 @@ app.get('/yelp',yelpPagingHandler);
 app.get('*', notFoundHandler); //error handler
 
 // Routes Handlers
+
 function homeRouteHandler(request, response) {
   response.status(200).send('Your server is alive! :D');
 }
@@ -194,6 +201,8 @@ function moviesHandler(req, res) {
     });
   console.log('after superagent');
 }
+
+// Credits to my colleague Emran Aloul for helping with Yelp.
 
 // to activate yelp run npm install yelp-fusion and npm i yelp.
 let pageCounter =1;
