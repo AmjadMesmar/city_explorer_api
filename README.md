@@ -150,3 +150,15 @@ A city explorer application that get the city's data and it's weather forecast a
 ## Credits and Collaborations
 
 Tasnim Wheebi.
+
+# Movies API and Yelp 
+
+Number and name of feature: 2 features , added movies and yelp APIs
+
+Estimate of time needed to complete: 8 hours
+
+Start time: 07/04/2021 3:00 pm
+
+Finish time: 08/04/2021 3:00 am
+
+Actual time needed to complete: 12+ hours
